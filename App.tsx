@@ -1,21 +1,19 @@
 //import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { useState } from 'react';
+import { StyleSheet, Text, View, Pressable, Button } from 'react-native';
 
 export default function App() {
+  const [count, setCount] = useState(0);
+  const [countP, setCountP] = useState<number>(0);
   return (
     <View style={styles.container}>
-      <View>
-        <Text style={styles.header1}>
-          Tiêu đề 1
-          <Text style={styles.header1Child}>
-            Tiêu đề con
-          </Text>
-        </Text>
-      </View>
-      <Text>Heloo !</Text>
-
-      <Text style={styles.header1Child}>Nội dung</Text>
-      <Text style={styles.content}>Thẻ view giống thẻ div, thẻ text giống thẻ p. Nhưng style của thẻ con ko kế thừa từ cha nếu nó có style riêng</Text>
+      <Text>coutIncrease = {count}</Text>
+      <Text>coutPressableTest = {countP}</Text>
+      <Pressable style={styles.button}
+        onPress={() => setCountP(countP + 1)}>
+        <Text style={{ color: 'white', padding: 3 }}> Click </Text>
+        <Button title="Increase" onPress={() => setCount(count + 1)} />
+      </Pressable>
     </View>
   );
 }
@@ -43,5 +41,10 @@ const styles = StyleSheet.create({
     color: 'green',
     fontSize: 20,
     fontWeight: '400',
+  },
+  button: {
+    borderColor: 'blue',
+    backgroundColor: 'black',
+    borderWidth: 2,
   }
 });
