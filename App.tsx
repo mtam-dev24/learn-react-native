@@ -1,19 +1,42 @@
 //import { StatusBar } from 'expo-status-bar';
 import { useState } from 'react';
-import { StyleSheet, Text, View, Pressable, Button } from 'react-native';
+import { StyleSheet, Text, View, Button, TextInput } from 'react-native';
 
 export default function App() {
+
   const [count, setCount] = useState(0);
-  const [countP, setCountP] = useState<number>(0);
+  const [name, setName] = useState<string>("mt dz");
+  const [age, setAge] = useState<number>(0)
   return (
     <View style={styles.container}>
-      <Text>coutIncrease = {count}</Text>
-      <Text>coutPressableTest = {countP}</Text>
-      <Pressable style={styles.button}
-        onPress={() => setCountP(countP + 1)}>
-        <Text style={{ color: 'white', padding: 3 }}> Click </Text>
-        <Button title="Increase" onPress={() => setCount(count + 1)} />
-      </Pressable>
+
+      {/* test input name */}
+      <View>
+        <Text>Name = {name}</Text>
+        <TextInput
+          style={styles.textInput}
+          multiline
+          autoCapitalize={"words"}
+          onChangeText={(nameValue) => setName(nameValue)}
+        />
+      </View>
+
+      {/* text input age */}
+      <View>
+        <Text>Age = {age}</Text>
+        <TextInput
+          style={styles.textInput}
+          keyboardType={"numeric"}
+          maxLength={2}
+          onChangeText={(ageValue) => setAge(+ageValue)}
+        />
+      </View>
+
+      {/* count */}
+      <View>
+        <Text>coutIncrease = {count}</Text>
+        <Button color={"green"} title="Increase" onPress={() => setCount(count + 1)} />
+      </View>
     </View>
   );
 }
@@ -25,26 +48,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  content: {
-    fontSize: 15,
-    paddingHorizontal: 30,
-  },
-  header1: {
-    color: 'red',
-    padding: 10,
-    borderWidth: 1,
-    borderColor: 'red',
-    fontSize: 20,
-    fontWeight: 700,
-  },
-  header1Child: {
-    color: 'green',
-    fontSize: 20,
-    fontWeight: '400',
-  },
   button: {
-    borderColor: 'blue',
-    backgroundColor: 'black',
+    backgroundColor: "black",
+  },
+  textInput: {
+    borderColor: "black",
     borderWidth: 2,
-  }
+    width: 300,
+    padding: 10,
+  },
 });
