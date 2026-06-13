@@ -1,6 +1,6 @@
 //import { StatusBar } from 'expo-status-bar';
 import { useState } from 'react';
-import { StyleSheet, Text, View, Button, TextInput } from 'react-native';
+import { StyleSheet, Text, View, Button, TextInput, Pressable } from 'react-native';
 
 export default function App() {
 
@@ -37,6 +37,11 @@ export default function App() {
         <Text>coutIncrease = {count}</Text>
         <Button color={"green"} title="Increase" onPress={() => setCount(count + 1)} />
       </View>
+      <Pressable
+        style={({ pressed }) => ({ opacity: (pressed) ? 0.5 : 1 })}
+      >
+        <Text style={styles.textInput}>Hlooo</Text>
+      </Pressable>
     </View>
   );
 }
